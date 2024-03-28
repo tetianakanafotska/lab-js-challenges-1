@@ -82,20 +82,20 @@ const duplicateWords = [
 ];
 
 //----> This code uniqufies the array, but does not preserve the order
-function uniquifyArray(duplicateWords) {
-  let result = [];
-  if (duplicateWords.length === 0) {
-    return null;
-  }
+// function uniquifyArray(duplicateWords) {
+//   let result = [];
+//   if (duplicateWords.length === 0) {
+//     return null;
+//   }
 
-  for (let i = 0; i < duplicateWords.length; i++) {
-    let restOfArray = duplicateWords.slice(i + 1);
-    if (!restOfArray.includes(duplicateWords[i])) {
-      result.push(duplicateWords[i]);
-    }
-  }
-  return result;
-}
+//   for (let i = 0; i < duplicateWords.length; i++) {
+//     let restOfArray = duplicateWords.slice(i + 1);
+//     if (!restOfArray.includes(duplicateWords[i])) {
+//       result.push(duplicateWords[i]);
+//     }
+//   }
+//   return result;
+// }
 
 function uniquifyArray(duplicateWords) {
   let result = [];
@@ -178,17 +178,17 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
-  // let biggestResult;
-  // for (let i = 0; i < matrix[i].length; i += 4) {
-  //   for (let j = 0; j < matrix.length; j += 4) {
-  //     let horizontalResult =
-  //       matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
-  //     let verticalResult =
-  //       matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
-  //     verticalResult > horizontalResult
-  //       ? (biggestResult = verticalResult)
-  //       : (biggestResult = horizontalResult);
-  //   }
-  // }
-  // return biggestResult;
+  let biggestResult;
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      let horizontalResult =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      let verticalResult =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      verticalResult > horizontalResult
+        ? (biggestResult = verticalResult)
+        : (biggestResult = horizontalResult);
+    }
+  }
+  return biggestResult;
 }
